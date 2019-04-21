@@ -1,0 +1,37 @@
+---
+name: RedLiner
+---
+
+import { Playground, Props } from 'docz';
+import { RedLiner } from './';
+import BasicExample from './examples/01-BasicExample';
+
+# RedLiner
+
+The RedLiner component can be used to add redlines to any display component.
+
+## Usage
+
+### Basic Example
+<Playground>
+  <BasicExample />
+</Playground>
+
+### Advanced Example
+<Playground>
+  <RedLiner config={['height', 'padding', 'specs', 'width']} showOnHover>
+    <div style={{
+      backgroundColor: '#14c2e7',
+      borderRadius: 20,
+      color: 'white',
+      height: 40,
+      lineHeight: '40px',
+      textAlign: 'center',
+      width: 142,
+    }}>helllllo</div>
+  </RedLiner>
+</Playground>
+
+## Props
+
+<Props of={RedLiner} />

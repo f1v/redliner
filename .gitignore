@@ -1,0 +1,23 @@
+# Build
+lib
+dist
+docs/dist
+.docz
+
+# Logs
+logs
+*.log
+
+# Coverage tools
+coverage
+
+# Dependency directory
+node_modules
+
+# IDE
+*.code-workspace
+.vscode
+
+# Other
+.DS_Store
+.env
