@@ -4,7 +4,8 @@
   "description": "A React utility to display redlines",
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc --project ./config/tsconfig.json && yarn rollup",
+    "build": "tsc --project ./tsconfig.json && yarn rollup",
+    "clean": "rm -rf node_modules yarn.lock",
     "rollup": "rollup ./lib/RedLiner/RedLiner.js --file ./lib/index.js --format iife",
     "start": "docz dev --config ./config/doczrc.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -29,11 +30,13 @@
     "@types/lodash": "^4.14.123",
     "@types/react": "^16.8.14",
     "@types/react-dom": "^16.8.4",
-    "docz": "^2.2.0",
+    "docz": "^1.2.0",
     "docz-plugin-css": "^0.11.0",
     "docz-theme-default": "^1.0.4",
+    "prettier": "^1.19.1",
     "react-hot-loader": "^4.8.4",
-    "typescript": "^3.4.4"
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.5"
   },
   "resolutions": {
     "docz/**/webpack": "4.28.4"

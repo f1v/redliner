@@ -1,5 +1,8 @@
 # @f1v/redliner
 
-#### TODO
+## Local Development
 
-- `react-hot-loader` dependency can be removed once this issue is resolved: https://github.com/pedronauck/docz/issues/793
+- `yarn`
+- `yarn start`
+
+Project will run on port 3000. If port 3000 is in use, it will default to the next available port.

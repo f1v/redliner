@@ -2,8 +2,8 @@ import { css } from 'docz-plugin-css';
 
 export default {
   title: '@f1v/redliner',
-  description: 'This is my awesome documentation',
-  dest: './lib',
+  description: 'Documentation and examples for redliner',
+  dest: './docz/dist',
   plugins: [
     css({
       preprocessor: 'sass',
@@ -25,8 +25,8 @@ export default {
       `,
     },
   },
+  menu: ['Home', 'Line', 'RedLiner'],
   typescript: true,
   notUseSpecifiers: true,
-  filterComponents: (files) =>
-    files.filter(filepath => /[w-]*.(js|jsx|ts|tsx)$/.test(filepath))
-}
+  filterComponents: files => files.filter(filepath => /[w-]*.(js|jsx|ts|tsx)$/.test(filepath)),
+};

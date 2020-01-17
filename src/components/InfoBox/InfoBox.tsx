@@ -9,23 +9,20 @@ const InfoBox: React.FC<{ computedStyle: CSSStyleDeclaration }> = ({ computedSty
   return (
     <Popper placement="right">
       {({ ref, style, placement, arrowProps }) => (
-        <div className={styles.info}
-          ref={ref}
-          data-placement={placement}
-          style={style}>
-            <div className={styles.arrow} ref={arrowProps.ref} style={arrowProps.style} />
-            <h6>Details</h6>
-            background-color: {backgroundColor};
-            <br />
-            border-radius: {borderRadius};
-            <br />
-            font-family: {fontFamily};
-            <br />
-            font-size: {fontSize};
-          </div>
+        <div className={styles.info} ref={ref} data-placement={placement} style={style}>
+          <div className={styles.arrow} ref={arrowProps.ref} style={arrowProps.style} />
+          <h6>Details</h6>
+          background-color: {backgroundColor};
+          <br />
+          border-radius: {borderRadius};
+          <br />
+          font-family: {fontFamily};
+          <br />
+          font-size: {fontSize};
+        </div>
       )}
     </Popper>
   );
-}
+};
 
 export default InfoBox;
