@@ -5,10 +5,15 @@ name: RedLiner
 import { Playground, Props } from 'docz';
 import { RedLiner } from './';
 import BasicExample from './examples/01-BasicExample';
+import { buttonStyle } from '../../utils/exampleStyles.ts'
 
 # RedLiner
 
-The RedLiner component can be used to add redlines to any display component.
+The RedLiner component can be used to show style attritbutes on any display component.
+
+## Props
+
+<Props of={RedLiner} />
 
 ## Usage
 
@@ -20,18 +25,7 @@ The RedLiner component can be used to add redlines to any display component.
 ### Advanced Example
 <Playground>
   <RedLiner config={['height', 'padding', 'specs', 'width']} showOnHover>
-    <div style={{
-      backgroundColor: '#14c2e7',
-      borderRadius: 20,
-      color: 'white',
-      height: 40,
-      lineHeight: '40px',
-      textAlign: 'center',
-      width: 142,
-    }}>helllllo</div>
+    <button style={buttonStyle}>helllllo</button>
   </RedLiner>
 </Playground>
 
-## Props
-
-<Props of={RedLiner} />

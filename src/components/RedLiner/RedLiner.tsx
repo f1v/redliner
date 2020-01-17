@@ -1,6 +1,5 @@
-import classNames from 'classnames';
 import _ from 'lodash';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, RefObject } from 'react';
 import { Manager, Reference, Popper } from 'react-popper';
 
 import Line from '../Line/Line';
@@ -19,13 +18,13 @@ interface IRedLinerProps {
   showOnHover?: boolean;
 }
 
-function useComputedStyle(divElement) {
+function useComputedStyle(divElement: RefObject<HTMLDivElement>) {
   const [computedStyle, setComputedStyle] = useState();
 
   useEffect(() => {
     if (divElement && divElement.current && divElement.current.children.length) {
       const child: Element = divElement.current.children[0];
-  
+
       setComputedStyle(window.getComputedStyle(child));
     }
   }, [divElement]);
@@ -38,21 +37,28 @@ function useComputedStyle(divElement) {
  */
 const RedLiner: React.FC<IRedLinerProps> = ({ children, config, showOnHover }) => {
   const divElement = useRef(null);
-  const [ isHovered, setIsHovered ] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const computedStyle = useComputedStyle(divElement) || {};
 
   const { height = 0, padding = 0, width = 0 } = computedStyle;
 
   const shouldShowDimension = (dimension: dimensionType): boolean => {
     return showOnHover ? isHovered && _.includes(config, dimension) : _.includes(config, dimension);
-  }
+  };
 
   return (
     <Manager>
       <Reference>
-        {({ ref }) => <div className={styles.wrapper}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)} ref={ref}><div ref={divElement}>{children}</div></div>}
+        {({ ref }) => (
+          <div
+            className={styles.wrapper}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            ref={ref}
+          >
+            <div ref={divElement}>{children}</div>
+          </div>
+        )}
       </Reference>
       <Line
         direction="horizontal"
@@ -76,7 +82,7 @@ const RedLiner: React.FC<IRedLinerProps> = ({ children, config, showOnHover }) =
       {shouldShowDimension('specs') && <InfoBox computedStyle={computedStyle} />}
     </Manager>
   );
-}
+};
 
 RedLiner.defaultProps = {
   color: 'red',

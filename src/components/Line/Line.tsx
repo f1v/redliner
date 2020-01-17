@@ -18,29 +18,26 @@ interface IRedlineProps {
  * Redline indicator
  */
 const Line: React.FC<IRedlineProps> = props => {
-  const { color, direction, placement, size } = props;
+  const { color, direction = 'horizontal', placement, size } = props;
   const dirProp: string = direction === 'horizontal' ? 'width' : 'height';
   const numberSize: number = size ? parseInt(size) : 0;
 
-  const customStyle: any = { '--line-color': color, [dirProp]: `${numberSize - 2}px` }
+  const customStyle: any = { '--line-color': color, [dirProp]: `${numberSize - 2}px` };
 
   return props.isHidden ? null : (
     <Popper placement={placement}>
       {({ ref, style }) => (
         <div
-          className={classNames(
-            styles.line,
-            styles[direction],
-          )}
+          className={classNames(styles.line, styles[direction])}
           ref={ref}
           style={{ ...customStyle, ...style }}
         >
-          <span>{Math.round(parseInt(size))}px</span>
+          <span>{size && Math.round(parseInt(size))}px</span>
         </div>
       )}
     </Popper>
   );
-}
+};
 
 Line.defaultProps = {
   direction: 'horizontal',
