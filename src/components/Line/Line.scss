@@ -1,0 +1,75 @@
+$line-height: 20px;
+$line-width: 30px;
+
+$line-spacing-horizontal: 2px;
+$line-spacing-vertical: 2px;
+
+$tails-size: 10px;
+$tails-horizontal-width: $tails-size;
+$tails-vertical-height: $tails-size;
+
+.line {
+  --line-color: #f65e23;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+
+  &:before {
+    content: '';
+    height: 1px;
+    position: absolute;
+    width: 1px;
+  }
+
+  span {
+    color: white;
+    background-color: var(--line-color);
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: $line-height;
+    padding: 0 4px;
+    position: absolute;
+  }
+}
+
+.line.horizontal {
+  border-left: 1px solid var(--line-color);
+  border-right: 1px solid var(--line-color);
+  height: $tails-vertical-height + 1;
+
+  &:before {
+    width: 100%;
+    background-color: var(--line-color);
+    left: 0;
+    top: $tails-vertical-height / 2;
+  }
+
+  span {
+    top: -0.5 * $tails-vertical-height;
+    margin-left: -0.5 * $line-width;
+    left: 50%;
+  }
+}
+
+.line.vertical {
+  border-bottom: 1px solid var(--line-color);
+  border-top: 1px solid var(--line-color);
+  left: -1 * ($line-spacing-horizontal + $line-width);
+  top: 0;
+  width: $tails-horizontal-width + 1;
+
+  &:before {
+    height: 100%;
+    background-color: var(--line-color);
+    left: 0.5 * $tails-horizontal-width;
+  }
+
+  span {
+    left: -1 * $tails-horizontal-width;
+    margin-top: -0.5 * $line-height;
+    top: 50%;
+  }
+}
