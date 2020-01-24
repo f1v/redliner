@@ -1,18 +1,20 @@
 {
-  "name": "docz-example-typescript",
-  "version": "0.2",
-  "license": "MIT",
+  "name": "@f1v/redliner",
+  "version": "0.0.1",
+  "description": "A React utility to display redlines",
+  "main": "lib/index.js",
   "scripts": {
-    "build": "tsc --project ./tsconfig.json && yarn rollup",
-    "clean": "rm -rf .docz node_modules yarn.lock",
-    "docz:build": "docz build",
-    "docz:serve": "docz build && docz serve",
-    "rollup": "rollup ./lib/RedLiner/RedLiner.js --file ./lib/index.js --format iife",
+    "build": "docz build",
+    "clean": "rm -rf lib .docz node_modules yarn.lock",
     "start": "docz dev"
   },
+  "author": "Veronica Carrillo-Marquez",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/f1v/redliner.git"
+  },
   "dependencies": {
-    "@emotion/core": "^10.0.14",
-    "@emotion/styled": "^10.0.14",
     "classnames": "^2.2.6",
     "docz": "2.2.0",
     "gatsby-plugin-sass": "^2.1.27",
@@ -26,9 +28,7 @@
     "@types/lodash": "^4.14.123",
     "@types/react": "^16.8.14",
     "@types/react-dom": "^16.8.4",
-    "docz-theme-default": "^1.0.4",
     "prettier": "^1.19.1",
-    "react-hot-loader": "^4.12.19",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.7.5"
   }
