@@ -3,7 +3,6 @@ export default {
   description: 'Documentation and examples for redliner',
   typescript: true,
   menu: ['Home', 'Line', 'RedLiner'],
-  dest: './lib',
+  dest: './.docz/dist',
   src: './src',
-  base: '/docz',
 };
