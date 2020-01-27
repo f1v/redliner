@@ -5,16 +5,16 @@ import { Manager, Reference, Popper } from 'react-popper';
 import Line from '../Line/Line';
 import InfoBox from '../InfoBox/InfoBox';
 
-import styles from './RedLiner.scss'; // tslint:disable-line no-relative-imports
+import styles from './RedLiner.module.scss';
 
 type dimensionType = 'height' | 'padding' | 'specs' | 'width';
 
 interface IRedLinerProps {
   /** The color to use */
   color?: string;
-  /** This is a color description */
+  /** Which attributes to display */
   config?: dimensionType[];
-  /** This is a color description */
+  /** Hide unless hovered */
   showOnHover?: boolean;
 }
 

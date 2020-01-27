@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Popper } from 'react-popper';
 import { Placement } from 'popper.js';
 
-import styles from './Line.scss'; // tslint:disable-line no-relative-imports
+import styles from './Line.module.scss';
 
 interface IRedlineProps {
   color?: string;
