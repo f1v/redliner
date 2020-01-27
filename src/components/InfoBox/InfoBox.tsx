@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Popper } from 'react-popper';
 
-import styles from '../RedLiner/RedLiner.scss'; // tslint:disable-line no-relative-imports
+import styles from '../RedLiner/RedLiner.module.scss';
 
 const InfoBox: React.FC<{ computedStyle: CSSStyleDeclaration }> = ({ computedStyle }) => {
   const { backgroundColor, borderRadius, fontFamily, fontSize } = computedStyle;
