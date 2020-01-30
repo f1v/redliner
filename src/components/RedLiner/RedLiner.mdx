@@ -1,11 +1,11 @@
 ---
 name: RedLiner
+route: /redliner
 ---
 
 import { Playground, Props } from 'docz';
 import RedLiner from './RedLiner';
-import BasicExample from './examples/01-BasicExample.tsx';
-import { buttonStyle } from '../../utils/exampleStyles.ts'
+import { buttonStyle, inputStyle } from '../../utils/exampleStyles.ts'
 
 # RedLiner
 
@@ -17,15 +17,42 @@ The RedLiner component can be used to show style attritbutes on any display comp
 
 ## Usage
 
-### Basic Example
+### Basic
+
+By default `RedLiner` will display the height and width of its child component.
+
 <Playground>
-  <BasicExample />
+    <RedLiner>
+      <button style={buttonStyle}>
+        Measure Me
+      </button>
+    </RedLiner>
 </Playground>
 
-### Advanced Example
+### Config Options
+
+Specify which attributes to show using the `config` prop.
+
 <Playground>
-  <RedLiner config={['height', 'padding', 'specs', 'width']} showOnHover>
+  <RedLiner config={['height', 'padding', 'specs', 'width']}>
+    <button style={buttonStyle}>Measure Me</button>
+  </RedLiner>
+</Playground>
+
+### Show on Hover
+
+`RedLiner` accepts a prop `showOnHover` which hides the RedLiner component until the child component is hovered.
+<Playground>
+  <RedLiner showOnHover>
     <button style={buttonStyle}>helllllo</button>
+  </RedLiner>
+</Playground>
+
+### Use with Input
+
+<Playground>
+  <RedLiner config={['height', 'padding', 'specs', 'width']}>
+    <input style={inputStyle}></input>
   </RedLiner>
 </Playground>
 

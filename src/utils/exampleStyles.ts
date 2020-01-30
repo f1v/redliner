@@ -10,3 +10,11 @@ export const buttonStyle = {
   outline: 'none',
   width: 142,
 };
+
+export const inputStyle = {
+  borderRadius: 5,
+  fontFamily: 'Source Sans Pro',
+  fontSize: '16px',
+  height: 28,
+  width: 180,
+};
