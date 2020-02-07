@@ -5,4 +5,14 @@ export default {
   menu: ['Home', 'Line', 'RedLiner'],
   dest: './.docz/dist',
   src: './src',
+  themeConfig: {
+    colors: {
+      primary: '#f65e23',
+    },
+    fonts: {
+      heading: 'Roboto, sans-serif',
+      body: 'Roboto, sans-serif',
+      monospace: 'Menlo, monospace',
+    },
+  },
 };
