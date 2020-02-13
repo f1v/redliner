@@ -17,9 +17,9 @@ The RedLiner component can be used to show style attritbutes on any display comp
 
 ## Usage
 
-### Basic
+### Default Options
 
-By default `RedLiner` will display the height and width of its child component.
+The default options.
 
 <Playground>
     <RedLiner>
@@ -29,29 +29,31 @@ By default `RedLiner` will display the height and width of its child component.
     </RedLiner>
 </Playground>
 
-### Config Options
+### InfoBox Options
 
-Specify which attributes to show using the `config` prop.
+Specify which attributes to show in the InfoBox.
 
 <Playground>
-  <RedLiner config={['height', 'padding', 'specs', 'width']}>
+  <RedLiner infoOpts={['borderRadius', 'color']}>
     <button style={buttonStyle}>Measure Me</button>
   </RedLiner>
 </Playground>
 
 ### Show on Hover
 
-`RedLiner` accepts a prop `showOnHover` which hides the RedLiner component until the child component is hovered.
+Use the prop `showOnHover` to hide RedLiner until the child component is hovered.
 <Playground>
   <RedLiner showOnHover>
     <button style={buttonStyle}>helllllo</button>
   </RedLiner>
 </Playground>
 
-### Use with Input
+### Change color
+
+The `color` prop allows specifying the line color.
 
 <Playground>
-  <RedLiner config={['height', 'padding', 'specs', 'width']}>
+  <RedLiner color="blue">
     <input style={inputStyle}></input>
   </RedLiner>
 </Playground>

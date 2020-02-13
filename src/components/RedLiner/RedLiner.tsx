@@ -2,7 +2,6 @@ import _ from 'lodash';
 import React, { useEffect, useRef, useState, RefObject } from 'react';
 import { Manager, Reference } from 'react-popper';
 
-import { CSSProperty } from '../../utils/types';
 import Line from '../Line/Line';
 import InfoBox from '../InfoBox/InfoBox';
 
@@ -21,6 +20,7 @@ interface IRedLinerProps {
   config?: Array<'height' | 'info' | 'width'> | 'all';
   /**
    * Attributes to display in the Infobox
+   * @default undefined
    */
   infoOpts?: string[];
   /**

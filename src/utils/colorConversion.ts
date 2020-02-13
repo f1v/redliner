@@ -1,6 +1,6 @@
 const rgbSelector = /rgb([\s\S]*?)[)]/gs;
 
-// Converts a single string (binary shifting - https://ryanclark.me/rgb-to-hex-via-binary-shifting/)
+// Converts a single string
 export const rgbToHex = (rgb: string) => {
   const [r, g, b] = rgb.replace(/[^\d,.]/g, '').split(',');
 
