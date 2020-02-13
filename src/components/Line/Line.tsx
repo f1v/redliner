@@ -15,7 +15,7 @@ interface IRedlineProps {
 }
 
 /**
- * Redline indicator
+ * The lines used inside RedLine
  */
 const Line: React.FC<IRedlineProps> = props => {
   const { color, direction = 'horizontal', placement, size } = props;

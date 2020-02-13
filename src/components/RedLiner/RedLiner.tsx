@@ -46,10 +46,11 @@ function useComputedStyle(divElement: RefObject<HTMLDivElement>) {
 /**
  * The main component
  */
-const RedLiner: React.FC<IRedLinerProps> = ({ children, config, showOnHover }) => {
-  const divElement = useRef(null);
+const RedLiner: React.FC<IRedLinerProps> = ({ children, color, config, infoOpts, showOnHover }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const divElement = useRef(null);
   const computedStyle = useComputedStyle(divElement) || {};
+  const { height = 0, width = 0 } = computedStyle;
 
   const shouldShowDimension = (dimension: 'height' | 'info' | 'width'): boolean => {
     const isEnabled = _.includes(config, dimension) || config === 'all';
@@ -72,12 +73,14 @@ const RedLiner: React.FC<IRedLinerProps> = ({ children, config, showOnHover }) =
         )}
       </Reference>
       <Line
+        color={color}
         direction="horizontal"
         isHidden={!shouldShowDimension('width')}
         placement="top"
         size={width}
       />
       <Line
+        color={color}
         direction="vertical"
         isHidden={!shouldShowDimension('height')}
         placement="left"
