@@ -10,11 +10,23 @@
     "rollup": "rollup ./lib/RedLiner/RedLiner.js --file ./lib/index.js --format iife",
     "start": "docz dev"
   },
-  "author": "Veronica Carrillo-Marquez",
+  "contributors": [
+    {
+      "name": "Veronica Carrillo-Marquez"
+    },
+    {
+      "name": "Tim Rybicki"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/f1v/redliner.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -32,8 +44,11 @@
     "@types/react-dom": "^16.8.4",
     "docz": "2.2.0",
     "gatsby-plugin-sass": "^2.1.27",
+    "husky": "^4.2.1",
+    "lodash": "^4.17.15",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.7.5"
   }
