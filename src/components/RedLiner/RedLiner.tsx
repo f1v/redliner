@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { useEffect, useRef, useState, RefObject } from 'react';
 import { Manager, Reference } from 'react-popper';
 
+import { CSSProperty } from '../../utils/types';
 import Line from '../Line/Line';
 import InfoBox from '../InfoBox/InfoBox';
 
@@ -86,14 +87,9 @@ const RedLiner: React.FC<IRedLinerProps> = ({ children, color, config, infoOpts,
         placement="left"
         size={height}
       />
-      <Line
-        color="#543ac1"
-        direction="horizontal"
-        isHidden={!(shouldShowDimension('padding') && padding)}
-        placement="bottom-start"
-        size="50px"
-      />
-      {shouldShowDimension('specs') && <InfoBox computedStyle={computedStyle} />}
+      {shouldShowDimension('info') && (
+        <InfoBox computedStyle={computedStyle} customOpts={infoOpts} />
+      )}
     </Manager>
   );
 };
