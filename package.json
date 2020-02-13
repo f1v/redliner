@@ -34,6 +34,7 @@
     "gatsby-theme-docz": "^2.2.0",
     "react": "^16.9.0",
     "react-dom": "^16.8.6",
+    "react-helmet-async": "^1.0.4",
     "react-popper": "^1.3.7",
     "react-popper-tooltip": "^2.10.1"
   },
