@@ -1,20 +1,31 @@
 import _ from 'lodash';
 import React, { useEffect, useRef, useState, RefObject } from 'react';
-import { Manager, Reference, Popper } from 'react-popper';
+import { Manager, Reference } from 'react-popper';
 
 import Line from '../Line/Line';
 import InfoBox from '../InfoBox/InfoBox';
 
 import styles from './RedLiner.module.scss';
 
-type dimensionType = 'height' | 'padding' | 'specs' | 'width';
-
 interface IRedLinerProps {
-  /** The color to use */
+  /**
+   * The color of the measurement lines
+   * @default 'red'
+   */
   color?: string;
-  /** Which attributes to display */
-  config?: dimensionType[];
-  /** Hide unless hovered */
+  /**
+   * Attributes the `RedLiner` component should display
+   * @default 'all'
+   */
+  config?: Array<'height' | 'info' | 'width'> | 'all';
+  /**
+   * Attributes to display in the Infobox
+   */
+  infoOpts?: string[];
+  /**
+   * Show `RedLiner` only when the element is hovered
+   * @default false
+   */
   showOnHover?: boolean;
 }
 
@@ -33,17 +44,17 @@ function useComputedStyle(divElement: RefObject<HTMLDivElement>) {
 }
 
 /**
- * A group of items
+ * The main component
  */
 const RedLiner: React.FC<IRedLinerProps> = ({ children, config, showOnHover }) => {
   const divElement = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const computedStyle = useComputedStyle(divElement) || {};
 
-  const { height = 0, padding = 0, width = 0 } = computedStyle;
+  const shouldShowDimension = (dimension: 'height' | 'info' | 'width'): boolean => {
+    const isEnabled = _.includes(config, dimension) || config === 'all';
 
-  const shouldShowDimension = (dimension: dimensionType): boolean => {
-    return showOnHover ? isHovered && _.includes(config, dimension) : _.includes(config, dimension);
+    return showOnHover ? isHovered && isEnabled : isEnabled;
   };
 
   return (
@@ -86,7 +97,7 @@ const RedLiner: React.FC<IRedLinerProps> = ({ children, config, showOnHover }) =
 
 RedLiner.defaultProps = {
   color: 'red',
-  config: ['height', 'width'],
+  config: 'all',
 };
 
 export default RedLiner;
