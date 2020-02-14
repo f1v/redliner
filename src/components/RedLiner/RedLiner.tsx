@@ -7,27 +7,34 @@ import InfoBox from '../InfoBox/InfoBox';
 
 import styles from './RedLiner.module.scss';
 
+type dimensionType = 'height' | 'info' | 'width';
+
+interface Config {
+  color?: string;
+  displayOpts?: dimensionType[] | 'all';
+  infoOpts?: string[];
+}
+
 interface IRedLinerProps {
   /**
-   * The color of the measurement lines
-   * @default 'red'
+   * The main configuration prop
+   * @default { color: 'red', displayOpts: 'all' },
    */
-  color?: string;
+  config?: Config;
   /**
-   * Attributes the `RedLiner` component should display
-   * @default 'all'
-   */
-  config?: Array<'height' | 'info' | 'width'> | 'all';
-  /**
-   * Attributes to display in the Infobox
-   * @default undefined
-   */
-  infoOpts?: string[];
-  /**
-   * Show `RedLiner` only when the element is hovered
+   * Show only when element is hovered
    * @default false
    */
   showOnHover?: boolean;
+}
+
+const DEFAULT_CONFIG = {
+  color: 'red',
+  displayOpts: 'all',
+};
+
+function getConfig(config: Config | undefined) {
+  return Object.assign({}, DEFAULT_CONFIG, config || {});
 }
 
 function useComputedStyle(divElement: RefObject<HTMLDivElement>) {
@@ -47,14 +54,15 @@ function useComputedStyle(divElement: RefObject<HTMLDivElement>) {
 /**
  * The main component
  */
-const RedLiner: React.FC<IRedLinerProps> = ({ children, color, config, infoOpts, showOnHover }) => {
+const RedLiner: React.FC<IRedLinerProps> = ({ children, config, showOnHover }) => {
   const [isHovered, setIsHovered] = useState(false);
   const divElement = useRef(null);
   const computedStyle = useComputedStyle(divElement) || {};
   const { height = 0, width = 0 } = computedStyle;
+  const { color, displayOpts, infoOpts } = getConfig(config);
 
-  const shouldShowDimension = (dimension: 'height' | 'info' | 'width'): boolean => {
-    const isEnabled = _.includes(config, dimension) || config === 'all';
+  const shouldShowDimension = (dimension: dimensionType): boolean => {
+    const isEnabled = _.includes(displayOpts, dimension) || displayOpts === 'all';
 
     return showOnHover ? isHovered && isEnabled : isEnabled;
   };
@@ -95,8 +103,11 @@ const RedLiner: React.FC<IRedLinerProps> = ({ children, color, config, infoOpts,
 };
 
 RedLiner.defaultProps = {
-  color: 'red',
-  config: 'all',
+  config: {
+    color: 'red',
+    displayOpts: 'all',
+  },
+  showOnHover: false,
 };
 
 export default RedLiner;
