@@ -9,7 +9,7 @@ import { buttonStyle, inputStyle } from '../../utils/exampleStyles.ts'
 
 # RedLiner
 
-The RedLiner component can be used to show style attritbutes on any display component.
+Used to show style attritbutes on any display component.
 
 ## Props
 
@@ -29,15 +29,26 @@ The default options.
     </RedLiner>
 </Playground>
 
-### InfoBox Options
+### Config Prop
 
-Specify which attributes to show in the InfoBox.
+Customize color of lines, sections to display, and properties to show in the InfoBox.
 
 <Playground>
-  <RedLiner infoOpts={['borderRadius', 'color']}>
+  <RedLiner config={{ color: 'blue', infoOpts: ['borderRadius', 'color'] }}>
     <button style={buttonStyle}>Measure Me</button>
   </RedLiner>
 </Playground>
+
+<br />
+
+Remove the InfoBox component with `displayOpts`.
+
+<Playground>
+  <RedLiner config={{ displayOpts: ['height', 'width'] }}>
+    <input style={inputStyle}></input>
+  </RedLiner>
+</Playground>
+
 
 ### Show on Hover
 
@@ -48,13 +59,10 @@ Use the prop `showOnHover` to hide RedLiner until the child component is hovered
   </RedLiner>
 </Playground>
 
-### Change color
-
-The `color` prop allows specifying the line color.
+### Maximum Customization
 
 <Playground>
-  <RedLiner color="blue">
-    <input style={inputStyle}></input>
+  <RedLiner config={{ color: 'purple', displayOpts: ['height', 'info'], infoOpts: ['borderRadius', 'color'] }} showOnHover>
+    <button style={buttonStyle}>Measure Me</button>
   </RedLiner>
 </Playground>
-
