@@ -26,14 +26,12 @@ const InfoBox: React.FC<{
     </span>
   );
 
-  const mappedCustomOpts =
-    customOpts &&
-    customOpts.map((opt: string) => (
-      <span key="opt">
-        {opt}: {computedStyle[_.camelCase(opt) as any]};
-        <br />
-      </span>
-    ));
+  const mappedCustomOpts = customOpts?.map((opt: string) => (
+    <span key="opt">
+      {opt}: {computedStyle[_.camelCase(opt) as any]};
+      <br />
+    </span>
+  ));
 
   return (
     <Popper placement="right">

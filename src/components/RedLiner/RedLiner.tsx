@@ -41,7 +41,7 @@ function useComputedStyle(divElement: RefObject<HTMLDivElement>) {
   const [computedStyle, setComputedStyle] = useState();
 
   useEffect(() => {
-    if (divElement && divElement.current && divElement.current.children.length) {
+    if (divElement.current?.children.length) {
       const child: Element = divElement.current.children[0];
 
       setComputedStyle(window.getComputedStyle(child));
