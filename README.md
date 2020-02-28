@@ -13,5 +13,4 @@ Run `yarn` + any of these commands:
 
 - `clean` - Remove `node_modules` and `yarn.lock`
 - `build` - Create static assets for deployment
-- `serve` - Call `build` and preview the site locally
-- `start` - Start Docz in development mode
+- `start` - Build and start Docz in development mode

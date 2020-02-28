@@ -73,3 +73,8 @@ $tails-vertical-height: $tails-size;
     top: 50%;
   }
 }
+
+// Prevent overflowing text in prop table
+div[data-testid='prop-type'] {
+  max-width: 80%;
+}
