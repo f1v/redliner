@@ -1,21 +1,16 @@
 import _ from 'lodash';
 import React, { useEffect, useRef, useState, RefObject } from 'react';
 import { Manager, Reference } from 'react-popper';
-
 import Line from '../Line/Line';
-import InfoBox from '../InfoBox/InfoBox';
-
+import { Config, dimensionType, getConfig } from './helpers/config';
+import { getCurrentComponents, ComponentsConfig } from './helpers/components';
 import styles from './RedLiner.module.scss';
 
-type dimensionType = 'height' | 'info' | 'width';
-
-interface Config {
-  color?: string;
-  displayOpts?: dimensionType[] | 'all';
-  infoOpts?: string[];
-}
-
 interface IRedLinerProps {
+  /**
+   * Optionally provide your own components for use
+   */
+  components: ComponentsConfig;
   /**
    * The main configuration prop
    * @default { color: 'red', displayOpts: 'all' },
@@ -26,15 +21,6 @@ interface IRedLinerProps {
    * @default false
    */
   showOnHover?: boolean;
-}
-
-const DEFAULT_CONFIG = {
-  color: 'red',
-  displayOpts: 'all',
-};
-
-function getConfig(config: Config | undefined) {
-  return Object.assign({}, DEFAULT_CONFIG, config || {});
 }
 
 function useComputedStyle(divElement: RefObject<HTMLDivElement>) {
@@ -54,12 +40,15 @@ function useComputedStyle(divElement: RefObject<HTMLDivElement>) {
 /**
  * The main component
  */
-const RedLiner: React.FC<IRedLinerProps> = ({ children, config, showOnHover }) => {
+const RedLiner: React.FC<IRedLinerProps> = ({ children, components, config, showOnHover }) => {
   const [isHovered, setIsHovered] = useState(false);
   const divElement = useRef(null);
+
   const computedStyle = useComputedStyle(divElement) || {};
   const { height = 0, width = 0 } = computedStyle;
+
   const { color, displayOpts, infoOpts } = getConfig(config);
+  const { InfoBox } = getCurrentComponents(components);
 
   const shouldShowDimension = (dimension: dimensionType): boolean => {
     const isEnabled = _.includes(displayOpts, dimension) || displayOpts === 'all';
