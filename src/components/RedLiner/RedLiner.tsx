@@ -10,7 +10,7 @@ interface IRedLinerProps {
   /**
    * Optionally provide your own components for use
    */
-  components: ComponentsConfig;
+  components?: ComponentsConfig;
   /**
    * The main configuration prop
    * @default { color: 'red', displayOpts: 'all' },
