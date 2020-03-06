@@ -5,13 +5,15 @@ import { replaceAllRgbWithHex } from '../../utils/colorConversion';
 
 import styles from '../RedLiner/RedLiner.module.scss';
 
+export interface IInfoBoxProps {
+  computedStyle: CSSStyleDeclaration;
+  customOpts?: string[];
+}
+
 /**
  * Box which displays additional specs
  */
-const InfoBox: React.FC<{
-  computedStyle: CSSStyleDeclaration;
-  customOpts?: string[];
-}> = ({ computedStyle, customOpts }) => {
+const InfoBox: React.FC<IInfoBoxProps> = ({ computedStyle, customOpts }) => {
   const { backgroundColor, fontFamily, fontSize, padding } = computedStyle;
 
   const defaultOpts = (
