@@ -5,11 +5,11 @@ export type ComponentsConfig = {
   InfoBox: ComponentType<IInfoBoxProps>;
 };
 
-const defaultComponents = {
+export const defaultComponents = {
   InfoBox,
 };
 
-export const getCurrentComponents = (providedComponents: ComponentsConfig) => ({
+export const getCurrentComponents = (providedComponents?: ComponentsConfig) => ({
   ...defaultComponents,
   ...providedComponents,
 });

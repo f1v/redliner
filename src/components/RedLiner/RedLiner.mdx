@@ -6,6 +6,7 @@ route: /redliner
 import { Playground, Props } from 'docz';
 import RedLiner from './RedLiner';
 import { buttonStyle, inputStyle } from '../../utils/exampleStyles.ts'
+import { CustomInfoBox } from '../../utils/exampleComponents.tsx'
 
 # RedLiner
 
@@ -65,3 +66,47 @@ Use the prop `showOnHover` to hide RedLiner until the child component is hovered
     <button style={buttonStyle}>Measure Me</button>
   </RedLiner>
 </Playground>
+
+### Components Prop
+
+It's possible to replace and modify certain components in RedLiner. In this example, we replace the default InfoBox component with a custom version.
+
+<Playground>
+  <RedLiner components={{ InfoBox: CustomInfoBox }}>
+    <button style={buttonStyle}>Measure Me</button>
+  </RedLiner>
+</Playground>
+
+##### Custom InfoBox Component Example
+
+```jsx
+import React from 'react';
+import { Popper } from 'react-popper';
+import styles from 'styles/index.scss';
+
+export const CustomInfoBox = (props: any) => (
+  <Popper placement="right">
+    {({ ref, style, placement, arrowProps }) => (
+      <div className={styles.info} ref={ref} data-placement={placement} style={style}>
+        <div className={styles.arrow} ref={arrowProps.ref} style={arrowProps.style} />
+          <h6 style={{ fontSize: '16px' }}>Custom Info</h6>
+        <span>p: {props.computedStyle.padding}</span>
+      </div>
+    )}
+  </Popper>
+);
+```
+
+#### Alternate Custom InfoBox
+```jsx
+import React from 'react';
+import Select, { defaultComponents } from 'redliner';
+
+const CustomInfoBox = (props: any) => {
+  return (
+    <div style={{ border: '1px dotted blue' }}>
+      <defaultComponents.InfoBox {...props} />
+    </div>
+  );
+}
+```
