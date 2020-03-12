@@ -24,7 +24,7 @@ interface IRedLinerProps {
 }
 
 function useComputedStyle(divElement: RefObject<HTMLDivElement>) {
-  const [computedStyle, setComputedStyle] = useState();
+  const [computedStyle, setComputedStyle] = useState<CSSStyleDeclaration>();
 
   useEffect(() => {
     if (divElement.current?.children.length) {
@@ -44,7 +44,7 @@ const RedLiner: React.FC<IRedLinerProps> = ({ children, components, config, show
   const [isHovered, setIsHovered] = useState(false);
   const divElement = useRef(null);
 
-  const computedStyle = useComputedStyle(divElement) || {};
+  const computedStyle = useComputedStyle(divElement) || ({} as any);
   const { height = 0, width = 0 } = computedStyle;
 
   const { color, displayOpts, infoOpts } = getConfig(config);
