@@ -10,17 +10,15 @@ import { CustomInfoBox } from '../../utils/exampleComponents.tsx'
 
 # RedLiner
 
-Used to show style attritbutes on any display component.
-
 ## Props
 
 <Props of={RedLiner} />
 
 ## Usage
 
-### Default Options
+### Basic Example
 
-The default options.
+Wrapping a `RedLiner` component around a button displays the height, width, and an `InfoBox` which contains additional attributes.
 
 <Playground>
     <RedLiner>
@@ -30,46 +28,40 @@ The default options.
     </RedLiner>
 </Playground>
 
-### Config Prop
-
-Customize color of lines, sections to display, and properties to show in the InfoBox.
-
-<Playground>
-  <RedLiner config={{ color: 'blue', infoOpts: ['borderRadius', 'color'] }}>
-    <button style={buttonStyle}>Measure Me</button>
-  </RedLiner>
-</Playground>
-
-<br />
-
-Remove the InfoBox component with `displayOpts`.
-
-<Playground>
-  <RedLiner config={{ displayOpts: ['height', 'width'] }}>
-    <input style={inputStyle}></input>
-  </RedLiner>
-</Playground>
-
 ### Show on Hover
 
-Use the prop `showOnHover` to hide RedLiner until the child component is hovered.
+Use the prop `showOnHover` to only show RedLiner when the component is hovered.
+
 <Playground>
   <RedLiner showOnHover>
-    <button style={buttonStyle}>helllllo</button>
+    <button style={buttonStyle}>Hover Me</button>
   </RedLiner>
 </Playground>
 
-### Maximum Customization
+### Configuring Options
+
+Besides hover control, most customization is done through the `config` prop, which is an object containing the following properties:
+
+- `color` (string): the color of the lines for height and width
+- `displayOpts` ('all' | Array<'height' | 'info' | 'width'>): which parts of RedLiner are shown
+- `infoOpts` (string[]): which CSS properties are shown inside the InfoBox
 
 <Playground>
-  <RedLiner config={{ color: 'purple', displayOpts: ['height', 'info'], infoOpts: ['borderRadius', 'color'] }} showOnHover>
+  <RedLiner
+    config={{
+      color: 'purple',
+      displayOpts: ['height', 'info'],
+      infoOpts: ['borderRadius', 'color'],
+    }}
+    showOnHover
+  >
     <button style={buttonStyle}>Measure Me</button>
   </RedLiner>
 </Playground>
 
-### Components Prop
+## Custom Components
 
-It's possible to replace and modify certain components in RedLiner. In this example, we replace the default InfoBox component with a custom version.
+It's possible to replace and modify certain components in RedLiner. In this example, we replace the default InfoBox component with a custom `InfoBox` component.
 
 <Playground>
   <RedLiner components={{ InfoBox: CustomInfoBox }}>
@@ -77,10 +69,20 @@ It's possible to replace and modify certain components in RedLiner. In this exam
   </RedLiner>
 </Playground>
 
-##### Custom InfoBox Component Example
+##### Example: Custom InfoBox Component 1
+```jsx
+import { defaultComponents } from 'redliner';
+
+const CustomInfoBox = (props: any) => (
+  <div style={{ border: '1px dotted blue' }}>
+    <defaultComponents.InfoBox {...props} />
+  </div>
+)
+```
+
+##### Example: Custom InfoBox Component 2
 
 ```jsx
-import React from 'react';
 import { Popper } from 'react-popper';
 import styles from 'styles/index.scss';
 
@@ -95,18 +97,4 @@ export const CustomInfoBox = (props: any) => (
     )}
   </Popper>
 );
-```
-
-#### Alternate Custom InfoBox
-```jsx
-import React from 'react';
-import Select, { defaultComponents } from 'redliner';
-
-const CustomInfoBox = (props: any) => {
-  return (
-    <div style={{ border: '1px dotted blue' }}>
-      <defaultComponents.InfoBox {...props} />
-    </div>
-  );
-}
 ```
