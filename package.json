@@ -6,7 +6,7 @@
   "scripts": {
     "build:rollup": "tsc --project ./tsconfig.json && yarn rollup",
     "build": "docz build",
-    "clean": "rm -rf .docz node_modules yarn.lock",
+    "clean": "rm -rf .docz",
     "rollup": "rollup ./lib/RedLiner/RedLiner.js --file ./lib/index.js --format iife",
     "start": "docz dev"
   },
