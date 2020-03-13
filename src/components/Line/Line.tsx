@@ -6,7 +6,7 @@ import { Placement } from 'popper.js';
 
 import styles from './Line.module.scss';
 
-interface IRedlineProps {
+export interface ILineProps {
   color?: string;
   direction?: 'horizontal' | 'vertical';
   size: string | null;
@@ -17,7 +17,7 @@ interface IRedlineProps {
 /**
  * The lines used inside RedLine
  */
-const Line: React.FC<IRedlineProps> = props => {
+const Line: React.FC<ILineProps> = props => {
   const { color, direction = 'horizontal', placement, size } = props;
   const dirProp: string = direction === 'horizontal' ? 'width' : 'height';
   const numberSize: number = size ? parseInt(size) : 0;
