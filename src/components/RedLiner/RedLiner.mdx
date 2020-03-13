@@ -73,7 +73,7 @@ It's possible to replace the `InfoBox` and `Line` components by passing your cus
 ```jsx
 import { defaultComponents } from 'redliner';
 
-const CustomInfoBox = (props: any) => (
+export const CustomInfoBox = (props) => (
   <div style={{ border: '1px dotted blue' }}>
     <defaultComponents.InfoBox {...props} />
   </div>
@@ -86,7 +86,7 @@ const CustomInfoBox = (props: any) => (
 import { Popper } from 'react-popper';
 import styles from 'styles/index.scss';
 
-export const CustomInfoBox = (props: any) => (
+export const CustomInfoBox = (props) => (
   <Popper placement="right">
     {({ ref, style, placement, arrowProps }) => (
       <div className={styles.info} ref={ref} data-placement={placement} style={style}>
