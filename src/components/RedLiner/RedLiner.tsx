@@ -1,25 +1,24 @@
 import _ from 'lodash';
 import React, { useEffect, useRef, useState, RefObject } from 'react';
 import { Manager, Reference } from 'react-popper';
-import { Config, dimensionType, getConfig } from './helpers/config';
-import { getCurrentComponents, ComponentsConfig } from './helpers/components';
+import { getCurrentComponents, ComponentsTypes } from './helpers/components';
 import './RedLiner.css';
 
-interface IRedLinerProps {
-  /**
-   * Optionally provide your own components for use
-   */
-  components?: ComponentsConfig;
-  /**
-   * The main configuration prop
-   * @default { color: 'red', displayOpts: 'all' },
-   */
-  config?: Config;
-  /**
-   * Show only when element is hovered
-   * @default false
-   */
-  showOnHover?: boolean;
+type dimensionType = 'height' | 'info' | 'width';
+
+interface Config {
+  color?: string;
+  displayOpts?: dimensionType[] | 'all';
+  infoOpts?: string[];
+}
+
+const DEFAULT_CONFIG = {
+  color: 'red',
+  displayOpts: 'all',
+};
+
+function getConfig(providedConfig: Config | undefined) {
+  return Object.assign({}, DEFAULT_CONFIG, providedConfig || {});
 }
 
 function useComputedStyle(divElement: RefObject<HTMLDivElement>) {
@@ -34,6 +33,23 @@ function useComputedStyle(divElement: RefObject<HTMLDivElement>) {
   }, [divElement]);
 
   return computedStyle;
+}
+
+interface IRedLinerProps {
+  /**
+   * Optionally provide your own components for use
+   */
+  components?: ComponentsTypes;
+  /**
+   * The main configuration prop
+   * @default { color: 'red', displayOpts: 'all' },
+   */
+  config?: Config;
+  /**
+   * Show only when element is hovered
+   * @default false
+   */
+  showOnHover?: boolean;
 }
 
 /**

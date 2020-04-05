@@ -2,7 +2,7 @@ import { ComponentType } from 'react';
 import InfoBox, { IInfoBoxProps } from '../../InfoBox/InfoBox';
 import Line, { ILineProps } from '../../Line/Line';
 
-export type ComponentsConfig = {
+export type ComponentsTypes = {
   InfoBox: ComponentType<IInfoBoxProps>;
   Line: ComponentType<ILineProps>;
 };
@@ -12,7 +12,7 @@ export const defaultComponents = {
   Line,
 };
 
-export const getCurrentComponents = (providedComponents?: ComponentsConfig) => ({
+export const getCurrentComponents = (providedComponents?: ComponentsTypes) => ({
   ...defaultComponents,
   ...providedComponents,
 });
