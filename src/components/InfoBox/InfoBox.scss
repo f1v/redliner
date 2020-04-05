@@ -1,7 +1,3 @@
-.wrapper {
-  display: inline-block;
-}
-
 .info {
   padding: 1rem;
   color: white;
@@ -23,9 +19,4 @@
     padding: 0;
     text-transform: uppercase;
   }
-}
-
-// Add space around examples in docz's Playground
-div[data-testid='live-preview'] {
-  padding: 44px 0 44px 30px;
 }

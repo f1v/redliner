@@ -3,8 +3,7 @@ import _ from 'lodash';
 import * as React from 'react';
 import { Popper } from 'react-popper';
 import { Placement } from 'popper.js';
-
-import styles from './Line.module.scss';
+import './Line.css';
 
 export interface ILineProps {
   color?: string;
@@ -28,7 +27,7 @@ const Line: React.FC<ILineProps> = props => {
     <Popper placement={placement}>
       {({ ref, style }) => (
         <div
-          className={classNames(styles.line, styles[direction])}
+          className={classNames('line', direction)}
           ref={ref}
           style={{ ...customStyle, ...style }}
         >

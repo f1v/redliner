@@ -35,7 +35,7 @@ $tails-vertical-height: $tails-size;
   }
 }
 
-.line.horizontal {
+.horizontal {
   border-left: 1px solid var(--line-color);
   border-right: 1px solid var(--line-color);
   height: $tails-vertical-height + 1;
@@ -54,7 +54,7 @@ $tails-vertical-height: $tails-size;
   }
 }
 
-.line.vertical {
+.vertical {
   border-bottom: 1px solid var(--line-color);
   border-top: 1px solid var(--line-color);
   left: -1 * ($line-spacing-horizontal + $line-width);

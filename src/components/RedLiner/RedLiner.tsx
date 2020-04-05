@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState, RefObject } from 'react';
 import { Manager, Reference } from 'react-popper';
 import { Config, dimensionType, getConfig } from './helpers/config';
 import { getCurrentComponents, ComponentsConfig } from './helpers/components';
-import styles from './RedLiner.module.scss';
+import './RedLiner.css';
 
 interface IRedLinerProps {
   /**
@@ -60,7 +60,7 @@ const RedLiner: React.FC<IRedLinerProps> = ({ children, components, config, show
       <Reference>
         {({ ref }) => (
           <div
-            className={styles.wrapper}
+            className="wrapper"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             ref={ref}
