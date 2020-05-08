@@ -1,6 +1,6 @@
 {
   "name": "react-redliner",
-  "version": "0.0.65",
+  "version": "0.0.69",
   "description": "A React utility to display redlines",
   "keywords": [
     "react",
@@ -12,13 +12,11 @@
   "main": "lib/index.js",
   "scripts": {
     "build:docz": "docz build",
-    "build:npm": "rm -rf ./lib && tsc && yarn sass:lib",
-    "clean": "rm -rf .docz",
-    "format": "pretty-quick --staged",
+    "build:npm": "rm -rf ./lib && tsc",
+    "clean:docz": "rm -rf .docz",
+    "format": "pretty-quick --staged --pattern \"**/*.*(js|jsx|ts|tsx)\"",
     "prepublishOnly": "yarn build:npm",
-    "sass:lib": "sass --no-source-map ./src/components:./lib/components",
-    "sass:watch": "sass --no-source-map --watch ./src/components",
-    "start": "concurrently \"yarn sass:watch\" \"docz dev\""
+    "start": "docz dev"
   },
   "contributors": [
     {
@@ -43,11 +41,11 @@
     }
   },
   "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "classnames": "^2.2.6",
-    "gatsby": "^2.19.8",
-    "gatsby-theme-docz": "^2.2.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.8.6",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-helmet-async": "^1.0.4",
     "react-popper": "^1.3.7",
     "react-popper-tooltip": "^2.10.1"
@@ -55,16 +53,21 @@
   "devDependencies": {
     "@types/classnames": "^2.2.7",
     "@types/lodash": "^4.14.123",
-    "@types/react": "^16.8.14",
-    "@types/react-dom": "^16.8.4",
-    "concurrently": "^5.1.0",
+    "@types/react": "^16.12.0",
+    "@types/react-dom": "^16.12.0",
     "docz": "2.2.0",
+    "gatsby": "^2.19.8",
+    "gatsby-plugin-emotion": "^4.3.1",
+    "gatsby-theme-docz": "^2.2.0",
     "husky": "^4.2.1",
     "lodash": "^4.17.15",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
-    "sass": "^1.26.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.7.5"
+  },
+  "resolutions": {
+    "**/react": "^16.12.0",
+    "**/react-dom": "^16.12.0"
   }
 }

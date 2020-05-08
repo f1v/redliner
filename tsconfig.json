@@ -5,7 +5,7 @@
     "strict": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "noEmit": false,
     "target": "es5",
     "jsx": "react",

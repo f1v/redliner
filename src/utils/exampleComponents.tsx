@@ -1,15 +1,16 @@
 import React from 'react';
 import { Popper } from 'react-popper';
-import '../components/RedLiner/RedLiner.css';
+import { Info, Arrow, Title } from '../components/InfoBox/InfoBox.styles';
 
+// This component is used to show a custom InfoBox. This code isn't shown publicly.
 export const CustomInfoBox = (props: any) => (
   <Popper placement="right">
     {({ ref, style, placement, arrowProps }) => (
-      <div className="info" ref={ref} data-placement={placement} style={style}>
-        <div className="arrow" ref={arrowProps.ref} style={arrowProps.style} />
-        <h6 style={{ fontSize: '16px' }}>Custom Info</h6>
+      <Info ref={ref} data-placement={placement} style={style}>
+        <Arrow className="arrow" ref={arrowProps.ref} style={arrowProps.style} />
+        <Title style={{ fontSize: '16px' }}>Custom Info</Title>
         <span>p: {props.computedStyle.padding}</span>
-      </div>
+      </Info>
     )}
   </Popper>
 );
