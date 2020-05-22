@@ -52,8 +52,8 @@
   "devDependencies": {
     "@types/classnames": "^2.2.7",
     "@types/lodash": "^4.14.123",
-    "@types/react": "^16.12.0",
-    "@types/react-dom": "^16.12.0",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
     "docz": "2.2.0",
     "gatsby": "^2.19.8",
     "gatsby-plugin-emotion": "^4.3.1",
