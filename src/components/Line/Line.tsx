@@ -2,8 +2,7 @@ import _ from 'lodash';
 import * as React from 'react';
 import { Popper } from 'react-popper';
 import { Placement } from 'popper.js';
-import { css } from '@emotion/core';
-import { base, horizontal, vertical } from './Line.styles';
+import { LineElement } from './Line.styles';
 
 export interface ILineProps {
   color?: string;
@@ -25,16 +24,9 @@ const Line: React.FC<ILineProps> = props => {
   return isHidden ? null : (
     <Popper placement={placement}>
       {({ ref, style }) => (
-        <div
-          css={css`
-            ${base}
-            ${direction === 'horizontal' ? horizontal : vertical}
-          `}
-          ref={ref}
-          style={{ ...customStyle, ...style }}
-        >
+        <LineElement direction={direction} ref={ref} style={{ ...customStyle, ...style }}>
           <span>{size && Math.round(parseInt(size))}px</span>
-        </div>
+        </LineElement>
       )}
     </Popper>
   );

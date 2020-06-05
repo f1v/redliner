@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { useEffect, useRef, useState, RefObject } from 'react';
 import { Manager, Reference } from 'react-popper';
 import { getCurrentComponents, ComponentsTypes } from './helpers/components';
-import { inlineBlock } from './Redliner.styles';
+import { Wrapper } from './Redliner.styles';
 
 type dimensionType = 'height' | 'info' | 'width';
 
@@ -75,14 +75,13 @@ const RedLiner: React.FC<IRedLinerProps> = ({ children, components, config, show
     <Manager>
       <Reference>
         {({ ref }) => (
-          <div
-            css={inlineBlock}
+          <Wrapper
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             ref={ref}
           >
             <div ref={divElement}>{children}</div>
-          </div>
+          </Wrapper>
         )}
       </Reference>
       <Line

@@ -1,5 +1,5 @@
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 
-export const inlineBlock = css`
+export const Wrapper = styled.div`
   display: inline-block;
 `;

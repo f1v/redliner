@@ -1,6 +1,7 @@
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import { ILineProps } from './Line';
 
-export const base = css`
+export const LineElement = styled.div<Pick<ILineProps, 'direction'>>`
   height: 100%;
   position: absolute;
   text-align: center;
@@ -24,9 +25,10 @@ export const base = css`
     padding: 0 4px;
     position: absolute;
   }
-`;
 
-export const horizontal = css`
+  ${({ direction }) =>
+    direction === 'horizontal'
+      ? `
   border-left: 1px solid #f65e23;
   border-right: 1px solid #f65e23;
   height: 11px;
@@ -43,9 +45,8 @@ export const horizontal = css`
     margin-left: -15px;
     left: 50%;
   }
-`;
-
-export const vertical = css`
+  `
+      : `
   border-bottom: 1px solid #f65e23;
   border-top: 1px solid #f65e23;
   left: -32px;
@@ -63,4 +64,5 @@ export const vertical = css`
     margin-top: -10px;
     top: 50%;
   }
+  `}
 `;
