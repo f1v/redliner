@@ -1,10 +1,8 @@
-import classNames from 'classnames';
 import _ from 'lodash';
 import * as React from 'react';
 import { Popper } from 'react-popper';
 import { Placement } from 'popper.js';
-
-import styles from './Line.module.scss';
+import { LineElement } from './Line.styles';
 
 export interface ILineProps {
   color?: string;
@@ -18,22 +16,17 @@ export interface ILineProps {
  * The lines used inside RedLine
  */
 const Line: React.FC<ILineProps> = props => {
-  const { color, direction = 'horizontal', placement, size } = props;
+  const { color, direction = 'horizontal', isHidden, placement, size } = props;
   const dirProp: string = direction === 'horizontal' ? 'width' : 'height';
   const numberSize: number = size ? parseInt(size) : 0;
-
   const customStyle: any = { '--line-color': color, [dirProp]: `${numberSize - 2}px` };
 
-  return props.isHidden ? null : (
+  return isHidden ? null : (
     <Popper placement={placement}>
       {({ ref, style }) => (
-        <div
-          className={classNames(styles.line, styles[direction])}
-          ref={ref}
-          style={{ ...customStyle, ...style }}
-        >
+        <LineElement direction={direction} ref={ref} style={{ ...customStyle, ...style }}>
           <span>{size && Math.round(parseInt(size))}px</span>
-        </div>
+        </LineElement>
       )}
     </Popper>
   );

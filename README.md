@@ -1,18 +1,26 @@
-# @f1v/redliner
+# RedLiner
+
+RedLiner is a React component designed to easily visualize CSS/style properties on JSX/HTML elements. When RedLiner is wrapped around display components like buttons and inputs, RedLiner will visually show the properties in an easy to understand way.
+
+<p align="center">
+    <img src="https://i.imgur.com/0MKdb4E.png" alt="example-screenshot" />
+</p>
 
 ## Documentation
 
-Documentation is live! Please visit [redliner.f1v.co](https://redliner.f1v.co).
+For information on installing and using RedLiner, please visit the documentation at [redliner.f1v.co](https://redliner.f1v.co).
 
 ## Local Development with Docz
+
+RedLiner's website uses Docz which you can start locally with the following commands.
 
 - `yarn`
 - `yarn start`
 
-Project will run on port 3000. If port 3000 is in use, it will default to the next available port.
+## Publishing to npm
 
-## Commands
+To publish new versions on npm, follow these steps:
 
-- `yarn clean` - Remove docz cache folder
-- `yarn build` - Create static assets for deployment
-- `yarn start` - Build and start Docz in development mode
+-`npm version [patch|minor|major|<version_no>]`
+
+-`yarn publish` (automatically calls `yarn prepare`)

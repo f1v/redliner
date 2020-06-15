@@ -8,11 +8,10 @@ export const rgbToHex = (rgb: string) => {
 };
 
 // Scans JSX element(s) for rgb expressions and replaces with hex equivalent
-export const replaceAllRgbWithHex = (data: JSX.Element[] | JSX.Element) => {
-  return Array.isArray(data)
+export const replaceAllRgbWithHex = (data: JSX.Element[] | JSX.Element) =>
+  Array.isArray(data)
     ? data.map(item => item.props.children.map((str: string) => _replace(str)))
     : Object.values(data).map(item => item?.children?.map((str: string) => _replace(str)));
-};
 
 const _replace = (str: string) => {
   if (typeof str === 'string' && str.includes(`rgb(`)) {
